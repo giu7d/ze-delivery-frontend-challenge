@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    font-size: ${({ theme }) => theme.font.size};
+    font-size: ${({ theme }) => `${theme.font.size}px`};
     font-family: ${({ theme }) => theme.font.family};
   }
 
