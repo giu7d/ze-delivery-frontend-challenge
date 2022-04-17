@@ -3,6 +3,13 @@ import { BiCart, BiFilterAlt, BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 
 import { GlobalStyle } from '@/styles/global'
 import { Theme } from '@/themes'
+import {
+  BadgeButton,
+  BaseButton,
+  IconButton,
+  PrimaryCheckoutButton,
+  TextButton
+} from './components/fragments/Button'
 
 export function App() {
   return (
@@ -12,14 +19,14 @@ export function App() {
         <Main>
           {/* MOBILE NAV */}
           <nav>
-            <button className="btn btn--icon">
+            <IconButton>
               <BiMenuAltLeft />
-            </button>
+            </IconButton>
             <h2 className="title">Produtos</h2>
-            <button className="btn btn--badge">
+            <BadgeButton>
               <span>3</span>
               <BiCart className="icon" />
-            </button>
+            </BadgeButton>
           </nav>
 
           {/* FILTER */}
@@ -28,9 +35,9 @@ export function App() {
               <BiSearchAlt className="search-input__icon" />
               <input type="text" placeholder="Buscar" />
             </div>
-            <button className="btn btn--icon">
+            <IconButton>
               <BiFilterAlt />
-            </button>
+            </IconButton>
           </section>
           {/* Products */}
 
@@ -68,19 +75,19 @@ export function App() {
                       <div className="select">
                         <span className="select__label">Escolha um pack</span>
                         <div className="select__options">
-                          <button className="btn option">
+                          <BaseButton className="option">
                             15 <small>un.</small>
-                          </button>
-                          <button className="btn option option--selected">
+                          </BaseButton>
+                          <BaseButton className="option option--selected">
                             35 <small>un.</small>
-                          </button>
-                          <button className="btn option">
+                          </BaseButton>
+                          <BaseButton className="option">
                             60 <small>un.</small>
-                          </button>
+                          </BaseButton>
                         </div>
                       </div>
 
-                      <button className="btn btn--secondary">Adicionar</button>
+                      <TextButton>Adicionar</TextButton>
                     </div>
                   </div>
                 </div>
@@ -88,14 +95,14 @@ export function App() {
           </section>
           {/* BOTTOM CART */}
           <section className="cart">
-            <button className="btn btn--primary">
+            <PrimaryCheckoutButton>
               <span>Agendar entrega</span>
               <span className="value">
                 <small>R$</small>
                 52
                 <small>.99</small>
               </span>
-            </button>
+            </PrimaryCheckoutButton>
           </section>
         </Main>
       </ThemeProvider>
@@ -132,106 +139,6 @@ const Main = styled.div`
     position: fixed;
     width: 100%;
     z-index: 100;
-  }
-
-  .btn {
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #242424;
-    display: flex;
-    font-size: 1.5rem;
-    justify-content: center;
-    outline: none;
-    transition: 100ms opacity ease-out;
-    user-select: none;
-    border-radius: 1rem;
-    overflow: hidden;
-
-    &::-moz-focus-inner {
-      border: none;
-    }
-
-    &:active {
-      opacity: 0.5;
-      border-style: none;
-    }
-
-    &--primary {
-      width: 100%;
-      min-height: 3rem;
-      background: linear-gradient(
-        91.27deg,
-        #f07945 0%,
-        rgba(240, 121, 69, 0.85) 100%
-      );
-      box-shadow: 0px 4px 4px rgba(240, 121, 69, 0.1);
-      border-radius: 1rem;
-      padding: 1rem 2rem;
-
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-transform: capitalize;
-
-      color: #ffffff;
-
-      justify-content: space-between;
-
-      .value {
-        font-size: 1.5rem;
-        small {
-          font-size: 1rem;
-        }
-      }
-    }
-
-    &--secondary {
-      width: 100%;
-      min-height: 3rem;
-      background: linear-gradient(
-        133.91deg,
-        rgba(36, 36, 36, 0.1) -0.47%,
-        rgba(36, 36, 36, 0.05) 99.53%
-      );
-
-      border-radius: 1rem;
-      padding: 0.5rem 1rem;
-
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-transform: capitalize;
-
-      color: rgba(36, 36, 36, 0.75);
-    }
-
-    &--icon {
-      min-height: 3rem;
-      min-width: 3rem;
-    }
-
-    &--badge {
-      background: hsla(0, 0%, 0%, 0.05);
-      font-weight: 500;
-      font-size: 1rem;
-      color: #242424;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem 1rem;
-      min-height: auto;
-      gap: 0.25rem;
-      border-radius: 10rem;
-
-      .icon {
-        font-size: 1rem;
-      }
-    }
   }
 
   .filter {
