@@ -78,12 +78,4 @@ export const PrimaryButton = styled(TextButton)`
 export const PrimaryCheckoutButton = styled(PrimaryButton)`
   justify-content: space-between;
   padding: 1rem 2rem;
-
-  .value {
-    font-size: 1.5rem;
-
-    small {
-      font-size: 1rem;
-    }
-  }
 `

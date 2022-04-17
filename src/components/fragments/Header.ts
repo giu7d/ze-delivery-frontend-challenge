@@ -1,0 +1,14 @@
+import styled from 'styled-components'
+
+export const Header = styled.header`
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.light};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+`
