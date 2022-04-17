@@ -10,6 +10,10 @@ export const Card = styled.div`
   gap: 1rem;
   padding: 1rem 0;
   width: 100%;
+
+  & div:last-child {
+    width: 100%;
+  }
 `
 
 export const CardBadge = styled.div`

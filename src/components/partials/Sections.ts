@@ -12,6 +12,7 @@ export const ProductsSection = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  margin-bottom: 6rem;
 `
 
 export const CheckoutSection = styled.section`
