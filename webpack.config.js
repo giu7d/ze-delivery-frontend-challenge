@@ -1,4 +1,5 @@
 const path = require('path')
+const DotEnv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
@@ -40,7 +41,8 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: path.resolve(__dirname, './public/index.html')
   }),
-  new CleanWebpackPlugin()
+  new CleanWebpackPlugin(),
+  new DotEnv()
 ]
 
 const config = {
