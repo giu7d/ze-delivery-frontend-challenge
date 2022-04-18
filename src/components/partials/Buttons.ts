@@ -61,12 +61,13 @@ export const TextButton = styled(BaseButton)`
   background: ${({ theme }) => darkLinearGradient(theme)};
   border-radius: 1rem;
   color: ${({ theme }) => rgba(theme.colors.dark, 0.75)};
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   min-height: 3rem;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   width: 100%;
+  gap: 0.5rem;
 `
 
 export const PrimaryButton = styled(TextButton)`
@@ -78,4 +79,5 @@ export const PrimaryButton = styled(TextButton)`
 export const PrimaryCheckoutButton = styled(PrimaryButton)`
   justify-content: space-between;
   padding: 1rem 2rem;
+  font-size: 1.1rem;
 `

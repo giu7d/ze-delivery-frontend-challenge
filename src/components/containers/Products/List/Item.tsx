@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { Product } from '@/schemas/Product'
-import { TextButton } from '@/components/partials/Buttons'
+import { PrimaryButton, TextButton } from '@/components/partials/Buttons'
 import { ProductCard } from '@/components/fragments/Product/Card'
 import { ProductPackSelection } from '@/components/fragments/Product/PackSelection'
 import { useOrders } from '@/hooks/useOrders'
+import { BiCheck } from 'react-icons/bi'
 
 type ProductsListItemProps = {
   product: Product
@@ -13,8 +14,7 @@ type ProductsListItemProps = {
 
 export function ProductsListItem({ product }: ProductsListItemProps) {
   const [selectedPack, setSelectedPack] = useState(product.packs[0])
-
-  const { addOrder } = useOrders()
+  const { orders, addOrder } = useOrders()
 
   const handleAddProduct = () => {
     addOrder({
@@ -25,6 +25,10 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
       productId: product.id,
       id: uuidv4()
     })
+  }
+
+  const isSelectedOrderInOrders = () => {
+    return !!orders.find(order => order.selectedPack === selectedPack)
   }
 
   return (
@@ -43,7 +47,15 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
             selectedItem={selectedPack}
             onClick={setSelectedPack}
           />
-          <TextButton onClick={handleAddProduct}>Adicionar</TextButton>
+
+          {!isSelectedOrderInOrders() ? (
+            <TextButton onClick={handleAddProduct}>Adicionar</TextButton>
+          ) : (
+            <PrimaryButton>
+              Adicionado
+              <BiCheck />
+            </PrimaryButton>
+          )}
         </>
       }
     />
