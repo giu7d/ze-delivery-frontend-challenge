@@ -199,7 +199,7 @@
           "id": "145",
           "uuid": "aa0d0dc8-88c7-4917-920a-174e3d07701e",
           "original_price": 24,
-          "current_price": 15.96,
+          "current_price": 24,
           "status": "ACTIVE",
           "items": [],
           "unities": 6
@@ -261,7 +261,7 @@
           "id": "148",
           "uuid": "31d8b5b3-02c7-4d18-9d6a-261e018e489e",
           "original_price": 24.54,
-          "current_price": 17.94,
+          "current_price": 21.54,
           "status": "ACTIVE",
           "items": [],
           "unities": 6

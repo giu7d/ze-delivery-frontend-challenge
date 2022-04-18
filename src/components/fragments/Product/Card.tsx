@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 
 import {
   CurrentPriceTypography,
-  OldPriceTypography
+  OriginalPriceTypography
 } from '@/components/partials/Typographies'
 import {
   Card,
@@ -12,42 +12,57 @@ import {
   CardHeader,
   CardImage
 } from '@/components/partials/Cards'
-import { calculateDiscount } from '@/utils'
 
 type ProductCardProps = {
   brand: string
   description: string
-  oldPrice?: number
+  originalPrice: number
   currentPrice: number
   renderImage?: ReactElement
   renderActions?: ReactElement
 }
 
+const DISCOUNT_THRESHOLD = 15
+
 export function ProductCard({
-  oldPrice,
+  originalPrice,
   currentPrice,
   brand,
   description,
   renderImage,
   renderActions
 }: ProductCardProps) {
-  const renderPrice = () => {
-    const [decimal, precision = ''] = currentPrice.toString().split('.')
+  const getDiscount = () => {
+    return 100 - (currentPrice * 100) / originalPrice
+  }
+
+  const hasDiscount = () => getDiscount() > DISCOUNT_THRESHOLD
+
+  const renderDiscount = () => {
+    if (!hasDiscount()) return
 
     return (
-      <CurrentPriceTypography>
+      <CardBadge>
+        -{getDiscount().toFixed(0)}
+        <small>%</small>
+      </CardBadge>
+    )
+  }
+
+  const renderPrice = () => {
+    const [decimal, precision] = currentPrice.toString().split('.')
+
+    return (
+      <CurrentPriceTypography discount={hasDiscount()}>
         R$ {decimal}
-        <small>.{precision}</small>
+        {precision && <small>.{precision}</small>}
       </CurrentPriceTypography>
     )
   }
 
   return (
     <Card>
-      <CardBadge>
-        {calculateDiscount(currentPrice, oldPrice || currentPrice)}
-        <small>%</small>
-      </CardBadge>
+      {renderDiscount()}
       {renderImage && <CardImage>{renderImage}</CardImage>}
       <div>
         <CardHeader>
@@ -55,7 +70,11 @@ export function ProductCard({
           <h5 className="description">{description}</h5>
         </CardHeader>
         <CardContent>
-          {oldPrice && <OldPriceTypography>R$ {oldPrice}</OldPriceTypography>}
+          {hasDiscount() && (
+            <OriginalPriceTypography>
+              R$ {originalPrice}
+            </OriginalPriceTypography>
+          )}
           {renderPrice()}
         </CardContent>
         {renderActions && <CardActions>{renderActions}</CardActions>}

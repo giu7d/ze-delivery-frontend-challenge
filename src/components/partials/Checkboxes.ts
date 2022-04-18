@@ -26,6 +26,7 @@ export const CheckboxOption = styled(BaseButton)<{ selected?: boolean }>`
   font-size: 1.2rem;
   font-weight: 600;
   padding: 0.75rem;
+  min-width: 3rem;
   text-transform: capitalize;
 
   small {

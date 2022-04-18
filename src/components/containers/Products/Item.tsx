@@ -17,7 +17,7 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
       key={product.uuid}
       brand={product.brand}
       description={product.description}
-      oldPrice={selectedPack.originalPrice}
+      originalPrice={selectedPack.originalPrice}
       currentPrice={selectedPack.currentPrice}
       renderImage={<img src={product.image} alt="placeholder image" />}
       renderActions={

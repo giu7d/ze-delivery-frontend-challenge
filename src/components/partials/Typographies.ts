@@ -1,15 +1,16 @@
 import { rgba } from 'polished'
 import styled from 'styled-components'
 
-export const OldPriceTypography = styled.small`
+export const OriginalPriceTypography = styled.small`
   color: ${({ theme }) => rgba(theme.colors.dark, 0.25)};
   font-size: 1rem;
   font-weight: 700;
   text-decoration-line: line-through;
 `
 
-export const CurrentPriceTypography = styled.span`
-  color: ${({ theme }) => rgba(theme.colors.primary, 0.75)};
+export const CurrentPriceTypography = styled.span<{ discount?: boolean }>`
+  color: ${({ discount, theme }) =>
+    rgba(discount ? theme.colors.primary : theme.colors.dark, 0.75)};
   font-size: 1.25rem;
   font-weight: 700;
 `
