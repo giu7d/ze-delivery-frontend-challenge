@@ -4,23 +4,20 @@ import {
   CheckboxOption,
   CheckboxOptions
 } from '@/components/partials/Checkboxes'
-
-type CheckboxItem = {
-  id: string
-  value: string
-  mesurementUnit: string
-}
+import { ProductPack } from '@/schemas/Product'
 
 type PackCheckboxProps = {
   label?: string
-  items: CheckboxItem[]
-  selectedItem?: CheckboxItem
+  items: ProductPack[]
+  selectedItem?: ProductPack
+  onClick?: (item: ProductPack) => void
 }
 
 export const ProductPackSelection = ({
   label,
   items,
-  selectedItem
+  selectedItem,
+  onClick = () => {}
 }: PackCheckboxProps) => {
   return (
     <CheckboxArea>
@@ -30,6 +27,7 @@ export const ProductPackSelection = ({
           <CheckboxOption
             key={`${item.id}-checkbox-option`}
             selected={selectedItem && item.id === selectedItem.id}
+            onClick={() => onClick(item)}
           >
             {item.value}
             <small>{item.mesurementUnit}</small>

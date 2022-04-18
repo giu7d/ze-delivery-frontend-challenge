@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardImage
 } from '@/components/partials/Cards'
+import { calculateDiscount } from '@/utils'
 
 type ProductCardProps = {
   brand: string
@@ -44,7 +45,8 @@ export function ProductCard({
   return (
     <Card>
       <CardBadge>
-        -15<small>%</small>
+        {calculateDiscount(currentPrice, oldPrice || currentPrice)}
+        <small>%</small>
       </CardBadge>
       {renderImage && <CardImage>{renderImage}</CardImage>}
       <div>
