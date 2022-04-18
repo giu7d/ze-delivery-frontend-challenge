@@ -11,7 +11,7 @@ export function ProductsList() {
   const { products, isError, isLoading } = useProducts(1, 100)
 
   if (isError) {
-    return <div>{isError}</div>
+    return <div>{isError.message}</div>
   }
 
   if (isLoading) {
