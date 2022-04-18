@@ -1,26 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type GlobalState = {
-  cart: string
+import { OrderItem } from '@/schemas/Order'
+
+export type GlobalState = {
+  orders: OrderItem[]
 }
 
-const initialState = {
-  cart: ''
+const initialState: GlobalState = {
+  orders: []
 }
 
 export const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    setState: (state, action: PayloadAction<GlobalState>) => {
+    setOrders: (state, action: PayloadAction<OrderItem[]>) => {
       return {
         ...state,
-        ...action.payload
+        orders: action.payload
       }
     }
   }
 })
 
-export const { setState } = globalSlice.actions
+export const { setOrders } = globalSlice.actions
 
 export default globalSlice.reducer

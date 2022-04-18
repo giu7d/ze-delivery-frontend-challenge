@@ -7,7 +7,7 @@ export function useProducts(page: number, limit: number) {
 
   return {
     products: data?.products || [],
-    total: data?.total,
+    totalOfProducts: data?.total,
     isLoading: !data && !error,
     isError: error
   }
