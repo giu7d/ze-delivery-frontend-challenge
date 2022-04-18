@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import { BiCheck } from 'react-icons/bi'
 
 import { Product } from '@/schemas/Product'
-import { PrimaryButton, TextButton } from '@/components/partials/Buttons'
-import { ProductCard } from '@/components/fragments/Product/Card'
-import { ProductPackSelection } from '@/components/fragments/Product/PackSelection'
 import { useOrders } from '@/hooks/useOrders'
-import { BiCheck } from 'react-icons/bi'
+import { Image } from '@/components/fragments/Image'
+import { ProductCard } from '@/components/fragments/Product/Card'
+import { PrimaryButton, TextButton } from '@/components/partials/Buttons'
+import { ProductPackSelection } from '@/components/fragments/Product/PackSelection'
 
 type ProductsListItemProps = {
   product: Product
@@ -38,7 +39,12 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
       description={product.description}
       originalPrice={selectedPack.originalPrice}
       currentPrice={selectedPack.currentPrice}
-      renderImage={<img src={product.image} alt="placeholder image" />}
+      renderImage={
+        <Image
+          src={product.image}
+          alt={`Imagem do produto ${product.description}`}
+        />
+      }
       renderActions={
         <>
           <ProductPackSelection
