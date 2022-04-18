@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-type Product = {
+type ProductResponse = {
   id: string
   uuid: string
   type: string
@@ -40,7 +40,7 @@ type Product = {
   }[]
 }
 
-type Brand = {
+type BrandResponse = {
   id: string
   uuid: string
   name: string
