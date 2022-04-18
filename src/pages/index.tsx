@@ -1,4 +1,4 @@
-import { HeaderMobile } from '@/components/fragments/Header/Mobile'
+import { HeaderMobile } from '@/components/containers/Header'
 import { ProductsList } from '@/components/containers/Products/List'
 
 export function Home() {

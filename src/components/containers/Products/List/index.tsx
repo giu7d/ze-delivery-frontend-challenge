@@ -1,10 +1,11 @@
 import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
-import { Input, InputArea } from '@/components/partials/Inputs'
+import { useProducts } from '@/hooks/useProducts'
 import { IconButton } from '@/components/partials/Buttons'
+import { Input, InputArea } from '@/components/partials/Inputs'
 import { ProductCheckout } from '@/components/fragments/Product/Checkout'
 import { FilterSection, ProductsSection } from '@/components/partials/Sections'
-import { useProducts } from '@/hooks/useProducts'
+
 import { ProductsListItem } from './Item'
 
 export function ProductsList() {
