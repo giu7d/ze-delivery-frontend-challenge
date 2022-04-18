@@ -68,6 +68,10 @@ export const TextButton = styled(BaseButton)`
   text-transform: capitalize;
   width: 100%;
   gap: 0.5rem;
+
+  .icon {
+    font-size: 1.25rem;
+  }
 `
 
 export const PrimaryButton = styled(TextButton)`

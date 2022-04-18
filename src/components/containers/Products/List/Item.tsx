@@ -59,7 +59,7 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
           ) : (
             <PrimaryButton>
               Adicionado
-              <BiCheck />
+              <BiCheck className="icon" />
             </PrimaryButton>
           )}
         </>
