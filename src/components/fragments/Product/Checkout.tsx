@@ -2,16 +2,29 @@ import { PrimaryCheckoutButton } from '@/components/partials/Buttons'
 import { CheckoutSection } from '@/components/partials/Sections'
 import { FinalPriceTypography } from '@/components/partials/Typographies'
 
-export function ProductCheckout() {
+type ProductCheckoutProps = {
+  label?: string
+  price: number
+}
+
+export function ProductCheckout({ label, price }: ProductCheckoutProps) {
+  const renderPrice = () => {
+    const [decimal, precision] = price.toFixed(2).split('.')
+
+    return (
+      <FinalPriceTypography>
+        <small>R$</small>
+        {decimal}
+        <small>.{precision}</small>
+      </FinalPriceTypography>
+    )
+  }
+
   return (
     <CheckoutSection>
       <PrimaryCheckoutButton>
-        <span>Agendar entrega</span>
-        <FinalPriceTypography>
-          <small>R$</small>
-          52
-          <small>.99</small>
-        </FinalPriceTypography>
+        {label && <span>{label}</span>}
+        {renderPrice()}
       </PrimaryCheckoutButton>
     </CheckoutSection>
   )

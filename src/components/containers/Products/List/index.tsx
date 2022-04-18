@@ -1,5 +1,6 @@
 import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
 
+import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
 import { IconButton } from '@/components/partials/Buttons'
 import { Input, InputArea } from '@/components/partials/Inputs'
@@ -10,6 +11,7 @@ import { ProductsListItem } from './Item'
 
 export function ProductsList() {
   const { products, isError, isLoading } = useProducts(1, 100)
+  const { getOrderTotal } = useOrders()
 
   if (isError) {
     return <div>{isError.message}</div>
@@ -35,7 +37,7 @@ export function ProductsList() {
           <ProductsListItem key={product.uuid} product={product} />
         ))}
       </ProductsSection>
-      <ProductCheckout />
+      <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
     </>
   )
 }

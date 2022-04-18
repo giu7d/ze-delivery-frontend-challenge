@@ -9,5 +9,10 @@ export function useOrders() {
 
   const addOrder = (order: OrderItem) => dispatch(setOrders([...orders, order]))
 
-  return { orders, totalOfOrders: orders.length, addOrder }
+  const getOrderTotal = () =>
+    orders.reduce((acc, current) => {
+      return acc + current.selectedPack.currentPrice * current.quantity
+    }, 0)
+
+  return { orders, totalOfOrders: orders.length, addOrder, getOrderTotal }
 }
