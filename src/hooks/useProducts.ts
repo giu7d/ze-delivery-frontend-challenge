@@ -4,7 +4,7 @@ import { getProducts } from '@/services/api'
 import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
 
-const LIMIT = 3
+const LIMIT = 10
 
 const _getPaginationQuery = (index: number, data: any[]) => {
   if (data && !data.length) return
