@@ -34,7 +34,6 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
 
   return (
     <ProductCard
-      key={product.uuid}
       brand={product.brand}
       description={product.description}
       originalPrice={selectedPack.originalPrice}

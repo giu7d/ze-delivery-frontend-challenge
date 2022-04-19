@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
 import { ProductsSection } from '@/components/partials/Sections'
@@ -29,7 +31,9 @@ export function ProductsList() {
           ))
         )}
       </ProductsSection>
-      <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
+      <Link to="/orders">
+        <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
+      </Link>
     </>
   )
 }

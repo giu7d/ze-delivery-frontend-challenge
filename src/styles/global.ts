@@ -18,6 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.light};
   }
 
+  a {
+    text-decoration: none;
+  }
+
   html,
   body,
   #root {

@@ -54,7 +54,7 @@ export const BadgeButton = styled(BaseButton)`
 export const IconButton = styled(BaseButton)`
   min-height: 3rem;
   min-width: 3rem;
-  background: inherit;
+  background: transparent;
 `
 
 export const TextButton = styled(BaseButton)`
