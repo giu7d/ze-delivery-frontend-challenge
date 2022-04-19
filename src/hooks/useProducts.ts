@@ -1,13 +1,31 @@
-import useSWR from 'swr'
+import useSWRInfinite from 'swr/infinite'
 
 import { getProducts } from '@/services/api'
 
-export function useProducts(page: number, limit: number) {
-  const { data, error } = useSWR([page, limit], getProducts)
+const LIMIT = 10
+
+function getPaginationQuery(index: number, data: any[]) {
+  if (data && !data.length) return
+
+  return `?_page=${index + 1}&_limit=${LIMIT}`
+}
+
+export function useProducts() {
+  const { data, error, setSize } = useSWRInfinite(
+    getPaginationQuery,
+    getProducts,
+    {
+      revalidateFirstPage: false
+    }
+  )
+
+  const loadMoreProducts = () => {
+    setSize(size => size + 1)
+  }
 
   return {
-    products: data?.products || [],
-    totalOfProducts: data?.total,
+    products: data || [],
+    loadMoreProducts,
     isLoading: !data && !error,
     isError: error
   }

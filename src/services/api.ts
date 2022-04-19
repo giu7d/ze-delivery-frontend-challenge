@@ -6,19 +6,12 @@ export const API = axios.create({
   baseURL: process.env.API_URL
 })
 
-export async function getProducts(page: number, limit = 10) {
-  const { data, headers } = await API.get<ProductResponse[]>(`/products`, {
-    params: page && {
-      _page: page,
-      _limit: limit
-    }
-  })
-
-  const total = headers['X-Total-Count']
+export async function getProducts(query = '') {
+  const { data } = await API.get<ProductResponse[]>(`/products${query}`)
 
   const products = adaptProductsResponseToProducts(data)
 
-  return { products, total }
+  return products
 }
 
 export async function getBrands() {
