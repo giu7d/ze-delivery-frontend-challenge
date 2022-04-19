@@ -6,8 +6,10 @@ export const API = axios.create({
   baseURL: process.env.API_URL
 })
 
-export async function getProducts(query = '') {
-  const { data } = await API.get<ProductResponse[]>(`/products${query}`)
+export async function getProducts(query = {}) {
+  const { data } = await API.get<ProductResponse[]>('/products', {
+    params: query
+  })
 
   const products = adaptProductsResponseToProducts(data)
 

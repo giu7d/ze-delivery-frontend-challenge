@@ -1,12 +1,8 @@
-import { BiFilterAlt, BiSearchAlt } from 'react-icons/bi'
-
 import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
-import { IconButton } from '@/components/partials/Buttons'
-import { useScrollListener } from '@/hooks/useScrollListener'
-import { Input, InputArea } from '@/components/partials/Inputs'
+import { ProductsSection } from '@/components/partials/Sections'
+import { useScrollListener } from '@/hooks/utils/useScrollListener'
 import { ProductCheckout } from '@/components/fragments/Product/Checkout'
-import { FilterSection, ProductsSection } from '@/components/partials/Sections'
 
 import { ProductsListItem } from './Item'
 
@@ -26,15 +22,6 @@ export function ProductsList() {
 
   return (
     <>
-      <FilterSection>
-        <InputArea>
-          <BiSearchAlt className="icon" />
-          <Input type="text" placeholder="Buscar" />
-        </InputArea>
-        <IconButton>
-          <BiFilterAlt />
-        </IconButton>
-      </FilterSection>
       <ProductsSection>
         {products.map(page =>
           page.map(product => (

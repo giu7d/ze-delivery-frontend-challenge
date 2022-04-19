@@ -1,8 +1,8 @@
-import { useEffect, useMemo } from 'react'
-import debounce from 'lodash.debounce'
+import { useEffect } from 'react'
+import { useDebounce } from './useDebounce'
 
 export function useScrollListener(callback = () => {}) {
-  const debounceCallback = useMemo(() => debounce(callback, 250), [])
+  const debouncedCallback = useDebounce(callback)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, {
@@ -17,7 +17,7 @@ export function useScrollListener(callback = () => {}) {
       window.innerHeight + window.scrollY >=
       document.body.offsetHeight - 250
     ) {
-      debounceCallback()
+      debouncedCallback()
     }
   }
 }
