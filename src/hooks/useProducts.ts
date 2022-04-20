@@ -17,7 +17,6 @@ const _getPaginationQuery = (index: number, data: any[]) => {
 
 export function useProducts() {
   const [searchParams] = useSearchParams()
-
   const { data, error, setSize, mutate } = useSWRInfinite(
     _getPaginationQuery,
     query =>
@@ -34,9 +33,7 @@ export function useProducts() {
     mutate()
   }, [searchParams])
 
-  const loadMoreProducts = () => {
-    setSize(size => size + 1)
-  }
+  const loadMoreProducts = () => setSize(size => size + 1)
 
   return {
     products: data || [],

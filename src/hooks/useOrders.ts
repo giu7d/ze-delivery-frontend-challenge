@@ -1,31 +1,34 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { OrderItem } from '@/schemas/Order'
 import { GlobalState, setOrders } from '@/redux/reducer'
+import { useLocalStorage } from '@/hooks/utils/useLocalStorage'
 
 export function useOrders() {
-  const orders = useSelector<GlobalState, OrderItem[]>(state => state.orders)
   const dispatch = useDispatch()
+  const orders = useSelector<GlobalState, OrderItem[]>(state => state.orders)
+  const { getStorageData, persistStorageData, clearStorageData } =
+    useLocalStorage('orders')
 
-  const getOrderTotal = () =>
-    orders.reduce((acc, current) => {
-      return acc + current.selectedPack.currentPrice * current.quantity
-    }, 0)
+  useEffect(() => {
+    dispatch(setOrders(getStorageData()))
+  }, [])
+
+  useEffect(() => {
+    if (orders.length) persistStorageData(orders)
+  }, [orders])
 
   const addOrder = (order: OrderItem) => dispatch(setOrders([...orders, order]))
 
   const updateOrder = (order: OrderItem) => {
-    const orderIndex = orders.findIndex(
-      currentOrder => currentOrder.id === order.id
-    )
+    const newOrders = orders.map(item => {
+      if (item.id === order.id) return order
 
-    if (orderIndex === -1) return
+      return item
+    })
 
-    const updatedOrder = [...orders]
-
-    updatedOrder[orderIndex] = order
-
-    dispatch(setOrders(updatedOrder))
+    return dispatch(setOrders(newOrders))
   }
 
   const deleteOrder = (order: OrderItem) => {
@@ -33,7 +36,20 @@ export function useOrders() {
       currentOrder => currentOrder.id !== order.id
     )
 
-    dispatch(setOrders(filteredOrders))
+    return dispatch(setOrders(filteredOrders))
+  }
+
+  const resetOrders = () => {
+    clearStorageData()
+    return dispatch(setOrders([]))
+  }
+
+  const getOrderTotal = () => {
+    return orders.reduce(
+      (acc, { quantity, selectedPack }) =>
+        acc + selectedPack.currentPrice * quantity,
+      0
+    )
   }
 
   return {
@@ -42,6 +58,7 @@ export function useOrders() {
     addOrder,
     updateOrder,
     deleteOrder,
+    resetOrders,
     getOrderTotal
   }
 }
