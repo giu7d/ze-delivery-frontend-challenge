@@ -14,6 +14,12 @@ export const Card = styled.div`
   & div:last-child {
     width: 100%;
   }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+    width: auto;
+  }
 `
 
 export const CardBadge = styled.div`
@@ -34,6 +40,11 @@ export const CardBadge = styled.div`
   small {
     font-size: 0.75rem;
   }
+
+  @media screen and (min-width: 768px) {
+    align-self: flex-end;
+    border-radius: 0.1rem 1rem;
+  }
 `
 
 export const CardImage = styled.div`
@@ -47,6 +58,15 @@ export const CardImage = styled.div`
 
   img {
     max-height: 150px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-width: auto;
+    min-height: 250px;
+
+    img {
+      min-height: 100px;
+    }
   }
 `
 export const CardHeader = styled.div`
