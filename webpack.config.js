@@ -42,7 +42,9 @@ const plugins = [
     template: path.resolve(__dirname, './public/index.html')
   }),
   new CleanWebpackPlugin(),
-  new DotEnv()
+  new DotEnv({
+    systemvars: true
+  })
 ]
 
 const config = {
