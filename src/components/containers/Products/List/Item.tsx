@@ -29,7 +29,7 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
   }
 
   const isSelectedOrderInOrders = () => {
-    return !!orders.find(order => order.selectedPack === selectedPack)
+    return !!orders.find(order => order.selectedPack.id === selectedPack.id)
   }
 
   return (
