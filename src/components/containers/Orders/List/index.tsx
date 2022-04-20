@@ -21,7 +21,7 @@ export function OrdersList() {
         ))}
       </ProductsSection>
       <Link to="/orders">
-        <ProductCheckout label="Finalizar pedido" price={getOrderTotal()} />
+        <ProductCheckout label="Forma de pagamento" price={getOrderTotal()} />
       </Link>
     </>
   )

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { To, useNavigate } from 'react-router-dom'
 import { BiChevronLeft, BiTrash } from 'react-icons/bi'
 
 import { IconButton } from '@/components/partials/Buttons'
@@ -7,17 +7,20 @@ import { OrdersList } from '@/components/containers/Orders/List'
 import { useOrders } from '@/hooks/useOrders'
 
 export function Orders() {
+  const navigate = useNavigate()
   const { resetOrders } = useOrders()
+
+  const goBack = () => {
+    navigate(-1 as To, { replace: true })
+  }
 
   return (
     <>
       <HeaderMobile
         renderLeftAction={
-          <Link to="/">
-            <IconButton>
-              <BiChevronLeft />
-            </IconButton>
-          </Link>
+          <IconButton onClick={goBack}>
+            <BiChevronLeft />
+          </IconButton>
         }
         renderRightAction={
           <IconButton onClick={resetOrders}>

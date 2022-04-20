@@ -65,7 +65,6 @@ export const TextButton = styled(BaseButton)`
   font-weight: 600;
   min-height: 3rem;
   padding: 0.5rem 1rem;
-  text-transform: capitalize;
   width: 100%;
   gap: 0.5rem;
 

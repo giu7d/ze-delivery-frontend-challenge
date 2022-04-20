@@ -31,9 +31,12 @@ export function ProductsList() {
           ))
         )}
       </ProductsSection>
-      <Link to="/orders">
-        <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
-      </Link>
+
+      {!!getOrderTotal() && (
+        <Link to="/orders">
+          <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
+        </Link>
+      )}
     </>
   )
 }
