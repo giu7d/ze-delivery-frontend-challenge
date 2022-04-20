@@ -20,7 +20,7 @@ export function Orders() {
             <BiChevronLeft />
           </IconButton>
         }
-        pageTitle="Items"
+        pageTitle="Meu pedido"
       />
       <OrdersList />
     </>
