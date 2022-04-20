@@ -1,13 +1,13 @@
 import { FinalPriceTypography } from '@/components/fragments/Typographies'
 
-import { CheckoutButton, CheckoutSection } from './styles'
+import { CheckoutButton } from './styles'
 
-type ProductCheckoutProps = {
+type CheckoutProps = {
   label?: string
   price: number
 }
 
-export function CheckoutProduct({ label, price }: ProductCheckoutProps) {
+export function Checkout({ label, price }: CheckoutProps) {
   const renderPrice = () => {
     const [decimal, precision] = price.toFixed(2).split('.')
 
@@ -21,11 +21,9 @@ export function CheckoutProduct({ label, price }: ProductCheckoutProps) {
   }
 
   return (
-    <CheckoutSection>
-      <CheckoutButton>
-        {label && <span>{label}</span>}
-        {renderPrice()}
-      </CheckoutButton>
-    </CheckoutSection>
+    <CheckoutButton>
+      {label && <span>{label}</span>}
+      {renderPrice()}
+    </CheckoutButton>
   )
 }

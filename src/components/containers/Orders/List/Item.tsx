@@ -1,7 +1,7 @@
 import { OrderItem } from '@/schemas/Order'
 import { useOrders } from '@/hooks/useOrders'
 import { Image } from '@/components/fragments/Image'
-import { ProductCard } from '@/components/fragments/Card/Product'
+import { OrderCard } from '@/components/fragments/Card/Order'
 import { SelectNumber } from '@/components/fragments/Select/Number'
 import { LabelTypography } from '@/components/fragments/Typographies'
 import {
@@ -24,7 +24,7 @@ export function OrdersListItem({ orderItem }: OrdersListItemProps) {
   }
 
   return (
-    <ProductCard
+    <OrderCard
       brand={orderItem.brand}
       description={orderItem.description}
       originalPrice={orderItem.selectedPack.originalPrice}

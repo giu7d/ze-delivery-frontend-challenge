@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
 import { useScrollListener } from '@/hooks/utils/useScrollListener'
-import { CheckoutProduct } from '@/components/fragments/Checkout/Product'
+import { Checkout } from '@/components/fragments/Checkout'
 
 import { ProductsListItem } from './Item'
-import { ProductsListArea } from './styles'
+import { ProductsCheckoutArea, ProductsListArea } from './styles'
 
 export function ProductsList() {
   const { products, isError, isLoading, loadMoreProducts } = useProducts()
@@ -34,7 +34,9 @@ export function ProductsList() {
 
       {!!getOrderTotal() && (
         <Link to="/orders">
-          <CheckoutProduct label="Agendar entrega" price={getOrderTotal()} />
+          <ProductsCheckoutArea>
+            <Checkout label="Agendar entrega" price={getOrderTotal()} />
+          </ProductsCheckoutArea>
         </Link>
       )}
     </>
