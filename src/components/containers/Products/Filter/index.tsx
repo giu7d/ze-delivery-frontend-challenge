@@ -10,7 +10,7 @@ import { FilterArea } from './styles'
 export function ProductFilter() {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const debounceSetSearchParams = useDebounce(setSearchParams, 500)
+  const debounceSetSearchParams = useDebounce(setSearchParams, 250)
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const search = event.target.value
