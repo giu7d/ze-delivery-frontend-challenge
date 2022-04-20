@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 
 import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
-import { ProductsSection } from '@/components/partials/Sections'
 import { useScrollListener } from '@/hooks/utils/useScrollListener'
-import { ProductCheckout } from '@/components/fragments/Product/Checkout'
+import { CheckoutProduct } from '@/components/fragments/Checkout/Product'
 
 import { ProductsListItem } from './Item'
+import { ProductsListArea } from './styles'
 
 export function ProductsList() {
   const { products, isError, isLoading, loadMoreProducts } = useProducts()
@@ -24,17 +24,17 @@ export function ProductsList() {
 
   return (
     <>
-      <ProductsSection>
+      <ProductsListArea>
         {products.map(page =>
           page.map(product => (
             <ProductsListItem key={product.uuid} product={product} />
           ))
         )}
-      </ProductsSection>
+      </ProductsListArea>
 
       {!!getOrderTotal() && (
         <Link to="/orders">
-          <ProductCheckout label="Agendar entrega" price={getOrderTotal()} />
+          <CheckoutProduct label="Agendar entrega" price={getOrderTotal()} />
         </Link>
       )}
     </>

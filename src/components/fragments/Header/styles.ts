@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Header = styled.header`
+export const HeaderArea = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.light};
   display: flex;

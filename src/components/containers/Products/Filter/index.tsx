@@ -3,8 +3,9 @@ import { useSearchParams } from 'react-router-dom'
 import { BiSearchAlt } from 'react-icons/bi'
 
 import { useDebounce } from '@/hooks/utils/useDebounce'
-import { Input, InputArea } from '@/components/partials/Inputs'
-import { FilterSection } from '@/components/partials/Sections'
+import { Input, InputArea } from '@/components/fragments/Inputs'
+
+import { FilterArea } from './styles'
 
 export function ProductFilter() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -18,7 +19,7 @@ export function ProductFilter() {
   }
 
   return (
-    <FilterSection>
+    <FilterArea>
       <InputArea>
         <BiSearchAlt className="icon" />
         <Input
@@ -28,6 +29,6 @@ export function ProductFilter() {
           onChange={handleInput}
         />
       </InputArea>
-    </FilterSection>
+    </FilterArea>
   )
 }

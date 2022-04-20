@@ -2,21 +2,21 @@ import { primaryLinearGradient } from '@/styles/global'
 import { rgba } from 'polished'
 import styled from 'styled-components'
 
-import { BaseButton } from './Buttons'
+import { BaseButton } from '@/components/fragments/Buttons'
 
-export const CheckboxArea = styled.div`
+export const SelectPackArea = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 `
 
-export const CheckboxOptions = styled.div`
+export const SelectPackOptions = styled.div`
   display: flex;
   gap: 1rem;
   justify-content: center;
 `
 
-export const CheckboxOption = styled(BaseButton)<{ selected?: boolean }>`
+export const SelectPackOption = styled(BaseButton)<{ selected?: boolean }>`
   aspect-ratio: 1/1;
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => rgba(theme.colors.dark, 0.1)};

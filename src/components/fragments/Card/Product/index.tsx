@@ -3,15 +3,19 @@ import { ReactElement } from 'react'
 import {
   CurrentPriceTypography,
   OriginalPriceTypography
-} from '@/components/partials/Typographies'
+} from '@/components/fragments/Typographies'
+
 import {
-  Card,
   CardActions,
-  CardBadge,
   CardContent,
-  CardHeader,
-  CardImage
-} from '@/components/partials/Cards'
+  CardHeader
+} from '@/components/fragments/Card'
+
+import {
+  ProductCardBadge,
+  ProductCardImage,
+  ProductCardWrapper
+} from './styles'
 
 type ProductCardProps = {
   brand: string
@@ -42,10 +46,10 @@ export function ProductCard({
     if (!hasDiscount()) return
 
     return (
-      <CardBadge>
+      <ProductCardBadge>
         -{getDiscount().toFixed(0)}
         <small>%</small>
-      </CardBadge>
+      </ProductCardBadge>
     )
   }
 
@@ -61,9 +65,9 @@ export function ProductCard({
   }
 
   return (
-    <Card>
+    <ProductCardWrapper>
       {renderDiscount()}
-      {renderImage && <CardImage>{renderImage}</CardImage>}
+      {renderImage && <ProductCardImage>{renderImage}</ProductCardImage>}
       <div>
         <CardHeader>
           <h4 className="title">{brand}</h4>
@@ -79,6 +83,6 @@ export function ProductCard({
         </CardContent>
         {renderActions && <CardActions>{renderActions}</CardActions>}
       </div>
-    </Card>
+    </ProductCardWrapper>
   )
 }

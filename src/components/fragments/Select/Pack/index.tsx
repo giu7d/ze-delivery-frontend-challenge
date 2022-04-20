@@ -1,39 +1,36 @@
-import { LabelTypography } from '@/components/partials/Typographies'
-import {
-  CheckboxArea,
-  CheckboxOption,
-  CheckboxOptions
-} from '@/components/partials/Checkboxes'
 import { ProductPack } from '@/schemas/Product'
+import { LabelTypography } from '@/components/fragments/Typographies'
 
-type PackCheckboxProps = {
+import { SelectPackArea, SelectPackOption, SelectPackOptions } from './styles'
+
+type SelectPackProps = {
   label?: string
   items: ProductPack[]
   selectedItem?: ProductPack
   onClick?: (item: ProductPack) => void
 }
 
-export const ProductPackSelection = ({
+export const SelectPack = ({
   label,
   items,
   selectedItem,
   onClick = () => {}
-}: PackCheckboxProps) => {
+}: SelectPackProps) => {
   return (
-    <CheckboxArea>
+    <SelectPackArea>
       {label && <LabelTypography>{label}</LabelTypography>}
-      <CheckboxOptions>
+      <SelectPackOptions>
         {items.map(item => (
-          <CheckboxOption
+          <SelectPackOption
             key={`${item.id}-checkbox-option`}
             selected={selectedItem && item.id === selectedItem.id}
             onClick={() => onClick(item)}
           >
             {item.value}
             <small>{item.mesurementUnit}</small>
-          </CheckboxOption>
+          </SelectPackOption>
         ))}
-      </CheckboxOptions>
-    </CheckboxArea>
+      </SelectPackOptions>
+    </SelectPackArea>
   )
 }

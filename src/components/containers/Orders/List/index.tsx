@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 
 import { useOrders } from '@/hooks/useOrders'
-import { ProductsSection } from '@/components/partials/Sections'
-import { ProductCheckout } from '@/components/fragments/Product/Checkout'
+import { CheckoutProduct } from '@/components/fragments/Checkout/Product'
 
 import { OrdersListItem } from './Item'
+import { OrdersListArea } from './styles'
 
 export function OrdersList() {
   const { orders, getOrderTotal } = useOrders()
@@ -15,13 +15,13 @@ export function OrdersList() {
 
   return (
     <>
-      <ProductsSection>
+      <OrdersListArea>
         {orders.map(orderItem => (
           <OrdersListItem key={orderItem.id} orderItem={orderItem} />
         ))}
-      </ProductsSection>
+      </OrdersListArea>
       <Link to="/orders">
-        <ProductCheckout label="Forma de pagamento" price={getOrderTotal()} />
+        <CheckoutProduct label="Forma de pagamento" price={getOrderTotal()} />
       </Link>
     </>
   )

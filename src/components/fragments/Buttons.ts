@@ -78,9 +78,3 @@ export const PrimaryButton = styled(TextButton)`
   box-shadow: 0px 4px 4px ${({ theme }) => rgba(theme.colors.light, 0.1)};
   color: ${({ theme }) => theme.colors.light};
 `
-
-export const PrimaryCheckoutButton = styled(PrimaryButton)`
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-`

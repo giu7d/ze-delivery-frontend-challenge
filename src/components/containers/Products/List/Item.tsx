@@ -5,9 +5,9 @@ import { BiCheck } from 'react-icons/bi'
 import { Product } from '@/schemas/Product'
 import { useOrders } from '@/hooks/useOrders'
 import { Image } from '@/components/fragments/Image'
-import { ProductCard } from '@/components/fragments/Product/Card'
-import { PrimaryButton, TextButton } from '@/components/partials/Buttons'
-import { ProductPackSelection } from '@/components/fragments/Product/PackSelection'
+import { ProductCard } from '@/components/fragments/Card/Product'
+import { PrimaryButton, TextButton } from '@/components/fragments/Buttons'
+import { SelectPack } from '@/components/fragments/Select/Pack'
 
 type ProductsListItemProps = {
   product: Product
@@ -46,7 +46,7 @@ export function ProductsListItem({ product }: ProductsListItemProps) {
       }
       renderActions={
         <>
-          <ProductPackSelection
+          <SelectPack
             label="Escolha um pack"
             items={product.packs}
             selectedItem={selectedPack}

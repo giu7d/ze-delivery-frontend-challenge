@@ -1,17 +1,18 @@
-import { HeaderMobile } from '@/components/fragments/Header'
+import { Link } from 'react-router-dom'
+import { BiCart } from 'react-icons/bi'
+
+import { useOrders } from '@/hooks/useOrders'
+import { Header } from '@/components/fragments/Header'
+import { BadgeButton } from '@/components/fragments/Buttons'
 import { ProductsList } from '@/components/containers/Products/List'
 import { ProductFilter } from '@/components/containers/Products/Filter'
-import { Link } from 'react-router-dom'
-import { BadgeButton } from '@/components/partials/Buttons'
-import { BiCart } from 'react-icons/bi'
-import { useOrders } from '@/hooks/useOrders'
 
 export function Home() {
   const { totalOfOrders } = useOrders()
 
   return (
     <>
-      <HeaderMobile
+      <Header
         pageTitle="Produtos"
         renderRightAction={
           <Link to="/orders">

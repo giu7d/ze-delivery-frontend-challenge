@@ -1,14 +1,14 @@
-import { Image } from '@/components/fragments/Image'
-import { ProductCard } from '@/components/fragments/Product/Card'
-import { SelectNumber } from '@/components/fragments/Select/Number'
-import {
-  CheckboxArea,
-  CheckboxOption,
-  CheckboxOptions
-} from '@/components/partials/Checkboxes'
-import { LabelTypography } from '@/components/partials/Typographies'
-import { useOrders } from '@/hooks/useOrders'
 import { OrderItem } from '@/schemas/Order'
+import { useOrders } from '@/hooks/useOrders'
+import { Image } from '@/components/fragments/Image'
+import { ProductCard } from '@/components/fragments/Card/Product'
+import { SelectNumber } from '@/components/fragments/Select/Number'
+import { LabelTypography } from '@/components/fragments/Typographies'
+import {
+  SelectPackArea,
+  SelectPackOptions,
+  SelectPackOption
+} from '@/components/fragments/Select/Pack/styles'
 
 type OrdersListItemProps = {
   orderItem: OrderItem
@@ -37,22 +37,22 @@ export function OrdersListItem({ orderItem }: OrdersListItemProps) {
       }
       renderActions={
         <>
-          <CheckboxArea>
+          <SelectPackArea>
             <LabelTypography>Pack selecionado</LabelTypography>
-            <CheckboxOptions style={{ justifyContent: 'flex-start' }}>
-              <CheckboxOption selected>
+            <SelectPackOptions style={{ justifyContent: 'flex-start' }}>
+              <SelectPackOption selected>
                 {orderItem.selectedPack.value}
                 <small>{orderItem.selectedPack.mesurementUnit}</small>
-              </CheckboxOption>
-            </CheckboxOptions>
-          </CheckboxArea>
-          <CheckboxArea>
+              </SelectPackOption>
+            </SelectPackOptions>
+          </SelectPackArea>
+          <SelectPackArea>
             <LabelTypography>Quantidade</LabelTypography>
             <SelectNumber
               value={orderItem.quantity}
               onChange={handleQuantityChange}
             />
-          </CheckboxArea>
+          </SelectPackArea>
         </>
       }
     />

@@ -1,36 +1,37 @@
 import { ReactElement } from 'react'
 
-import { Header } from '@/components/partials/Header'
-import { IconButton } from '@/components/partials/Buttons'
+import { IconButton } from '@/components/fragments/Buttons'
 import { useWindowSize } from '@/hooks/utils/useWindowSize'
-import { PageTitleTypography } from '@/components/partials/Typographies'
+import { PageTitleTypography } from '@/components/fragments/Typographies'
 
-type HeaderMobileProps = {
+import { HeaderArea } from './styles'
+
+type HeaderProps = {
   pageTitle: string
   renderRightAction?: ReactElement
   renderLeftAction?: ReactElement
 }
 
-export function HeaderMobile({
+export function Header({
   pageTitle,
   renderLeftAction,
   renderRightAction
-}: HeaderMobileProps) {
+}: HeaderProps) {
   const { width } = useWindowSize()
 
   if (width > 768)
     return (
-      <Header>
+      <HeaderArea>
         <PageTitleTypography>{pageTitle}</PageTitleTypography>
         {renderRightAction || <IconButton />}
-      </Header>
+      </HeaderArea>
     )
 
   return (
-    <Header>
+    <HeaderArea>
       {renderLeftAction || <IconButton />}
       <PageTitleTypography>{pageTitle}</PageTitleTypography>
       {renderRightAction || <IconButton />}
-    </Header>
+    </HeaderArea>
   )
 }
