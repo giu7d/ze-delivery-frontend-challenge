@@ -22,7 +22,10 @@ export function Header({
   if (width > 768)
     return (
       <HeaderArea>
-        <PageTitleTypography>{pageTitle}</PageTitleTypography>
+        <div>
+          {renderLeftAction}
+          <PageTitleTypography>{pageTitle}</PageTitleTypography>
+        </div>
         {renderRightAction || <IconButton />}
       </HeaderArea>
     )
