@@ -1,17 +1,18 @@
 import { useNavigate } from 'react-router-dom'
-import { BiTrash } from 'react-icons/bi'
+import { BiCart, BiTrash } from 'react-icons/bi'
 
 import { useOrders } from '@/hooks/useOrders'
+import { Warning } from '@/components/fragments/Warning'
 import { Checkout } from '@/components/fragments/Checkout'
 import { TextButton } from '@/components/fragments/Buttons'
-
-import { OrdersListItem } from './Item'
-import { OrdersCheckoutArea, OrdersListArea, OrdersActionsArea } from './styles'
 import { SelectPackArea } from '@/components/fragments/Select/Pack/styles'
 import {
   CurrentPriceTypography,
   LabelTypography
 } from '@/components/fragments/Typographies'
+
+import { OrdersListItem } from './Item'
+import { OrdersCheckoutArea, OrdersListArea, OrdersActionsArea } from './styles'
 
 export function OrdersList() {
   const { orders, getOrderTotal, resetOrders } = useOrders()
@@ -25,7 +26,17 @@ export function OrdersList() {
   }
 
   if (!orders.length) {
-    return <div>Seu pedido está vazio. Insira um item no carrinho</div>
+    return (
+      <OrdersListArea>
+        <Warning>
+          <BiCart className="warning-icon" />
+          <h3 className="warning-title">Carrinho vazio</h3>
+          <p className="warning-content">
+            Seu pedido está vazio, insira um item no carrinho para continuar.
+          </p>
+        </Warning>
+      </OrdersListArea>
+    )
   }
 
   return (

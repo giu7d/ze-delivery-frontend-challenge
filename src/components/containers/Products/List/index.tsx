@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
+import { FiAlertTriangle } from 'react-icons/fi'
 
 import { useOrders } from '@/hooks/useOrders'
 import { useProducts } from '@/hooks/useProducts'
+import { Warning } from '@/components/fragments/Warning'
 import { Checkout } from '@/components/fragments/Checkout'
 import { useScrollListener } from '@/hooks/utils/useScrollListener'
 import { CardProductShimmer } from '@/components/fragments/Card/Product/Shimmer'
+import { OrdersListArea } from '@/components/containers/Orders/List/styles'
 
 import { ProductsListItem } from './Item'
 import { ProductsCheckoutArea, ProductsListArea } from './styles'
@@ -16,7 +19,15 @@ export function ProductsList() {
   useScrollListener(() => loadMoreProducts())
 
   if (isError) {
-    return <div>{isError.message}</div>
+    return (
+      <OrdersListArea>
+        <Warning>
+          <FiAlertTriangle className="warning-icon" />
+          <h3 className="warning-title">Erro</h3>
+          <p className="warning-content">{isError.message}</p>
+        </Warning>
+      </OrdersListArea>
+    )
   }
 
   if (isLoading) {
